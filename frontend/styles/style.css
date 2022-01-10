@@ -1,0 +1,24 @@
+@import "navbar.css";
+@import "canvas.css";
+
+html {
+  width: 100vw;
+  height: 100vh;
+  padding: none;
+  margin: none;
+  font-size: 10px;
+}
+
+body {
+  width: inherit;
+  height: inherit;
+  padding: inherit;
+  margin: inherit;
+}
+
+#root {
+  width: inherit;
+  height: inherit;
+  padding: inherit;
+  margin: inherit;
+}
