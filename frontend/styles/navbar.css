@@ -3,5 +3,6 @@
   height: 2rem;
   background-color: black;
   position: fixed;
-  display: block;
+  /* display: block; */
+  z-index: 999;
 }
