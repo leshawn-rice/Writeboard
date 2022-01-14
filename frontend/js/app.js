@@ -2,6 +2,7 @@ import Canvas from './tools/canvas.js';
 import RectTool from './tools/rect.js';
 import PointerTool from './tools/pointer.js';
 import './navbar.js';
+import './toolbar.js';
 
 
 const canvas = new Canvas();
@@ -18,6 +19,7 @@ function switchTool(toolName) {
   canvas.switchTool(tool);
 }
 
-let tool = tools.rect
-canvas.switchTool(tool)
+switchTool('rect');
 canvas.render();
+
+export {switchTool};

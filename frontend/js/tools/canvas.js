@@ -33,6 +33,12 @@ class Canvas {
   }
 
   switchTool(tool) {
+    this.canvas.__eventListeners['mouse:down'] = [];
+    this.canvas.__eventListeners['mouse:up'] = [];
+    this.canvas.__eventListeners['object:moving'] = [];
+    this.canvas.__eventListeners['object:scaling'] = [];
+    this.canvas.__eventListeners['object:skewing'] = [];
+    this.canvas.__eventListeners['object:rotating'] = [];
     this.canvas.on('mouse:down', (event) => {
       tool.handleMouseDown(event);
     });
@@ -71,7 +77,6 @@ class Canvas {
   }
 
   undo() {
-    console.log("UNDO")
     this.canvas.loadFromJSON(JSON.stringify(this.prevState));
     this.render();
   }
@@ -89,7 +94,10 @@ class Canvas {
   }
 
   deleteCurrentObject() {
-    this.canvas.remove(this.canvas.getActiveObject());
+    const objects = this.canvas.getActiveObject()._objects || [this.canvas.getActiveObject()];
+    for (let object of objects) {
+      this.canvas.remove(object);
+    }
     this.render();
   }
 }

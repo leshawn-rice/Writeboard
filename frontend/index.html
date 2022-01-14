@@ -9,9 +9,10 @@
   <meta name="description" content="Writeboard.io" />
   <link rel="apple-touch-icon" sizes="180x180" href="public/apple-touch-icon.png">
   <link rel="icon" href="public/favicon.ico" />
-<link rel="icon" type="image/png" sizes="32x32" href="public/favicon-32x32.png">
-<link rel="icon" type="image/png" sizes="16x16" href="public/favicon-16x16.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="public/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="public/favicon-16x16.png">
   <link rel="manifest" href="public/manifest.json" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0v4LLanw2qksYuRlEzO+tcaEPQogQ0KaoGN26/zrn20ImR1DfuLWnOo7aBA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
   <title>Writeboard</title>
 </head>
 
@@ -26,8 +27,20 @@
           <li class="navbar-list-item">Contact</li>
         </ul>
       </div>
+      <div id="toolbar">
+        <i class="fas fa-mouse-pointer toolbar-item" data-tool="pointer"></i>
+        <i class="far fa-hand-pointer toolbar-item" data-tool="hand"></i>
+        <i class="far fa-square toolbar-item" data-tool="rect"></i>
+        <i class="far fa-circle toolbar-item" data-tool="circle"></i>
+        <i class="fas fa-eraser toolbar-item" data-tool="eraser"></i>
+        <i class="fas fa-pen toolbar-item" data-tool="pen"></i>
+        <i class="fas fa-font toolbar-item" data-tool="type"></i>
+        <i class="far fa-images toolbar-item" data-tool="image"></i>
+
+      </div>
       <canvas id="canvas"></canvas>
   </div>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/js/all.min.js" integrity="sha512-fzff82+8pzHnwA1mQ0dzz9/E0B+ZRizq08yZfya66INZBz86qKTCt9MLU0NCNIgaMJCgeyhujhasnFUsYMsi0Q==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
   <script src="js/fabric.js"></script>
   <script type="module" src="js/app.js"></script>
 </body>
