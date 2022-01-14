@@ -13,8 +13,13 @@
   justify-content: space-evenly;
   padding-top: 1rem;
   padding-bottom: 1rem;
+  max-height: 50%;
 }
 
 .toolbar-item {
+  cursor: pointer;
+}
+
+.toolbar-colors {
   cursor: pointer;
 }
