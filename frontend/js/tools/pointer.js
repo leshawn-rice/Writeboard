@@ -1,8 +1,8 @@
-class PointerTool {
+import Tool from './tool.js';
+
+class PointerTool extends Tool {
   constructor(color, canvas) {
-    this.fill = color;
-    this.canvas = canvas;
-    this.name = 'Pointer';
+    super(color, canvas, 'Pointer');
   }
 
   handleMouseDown(event) {
@@ -10,11 +10,6 @@ class PointerTool {
   }
 
   handleMouseUp(event) {
-    return;
-
-  }
-
-  draw() {
     return;
   }
 }

@@ -1,13 +1,9 @@
-class HandTool {
-  constructor(color, canvas) {
-    this.fill = color;
-    this.canvas = canvas;
-    this.name = 'Hand';
-    this.panning = false;
-    this.canvas.canvas.on('mouse:move', (event) => {
-      this.handleMouseMove(event);
-    });
+import Tool from './tool.js';
 
+class HandTool extends Tool {
+  constructor(color, canvas) {
+    super(color, canvas, 'Hand');
+    this.panning = false;
   }
 
   handleMouseDown(event) {
@@ -27,10 +23,6 @@ class HandTool {
     this.panning = false;
     this.canvas.canvas.selection = true;
     this.canvas.canvas.setCursor('default');
-  }
-
-  draw() {
-    return;
   }
 }
 

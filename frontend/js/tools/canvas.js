@@ -17,46 +17,34 @@ class Canvas {
       }
     });
     this.sizeCanvas();
-    // Events to record that can be undone
-    this.canvas.on('object:moved', (event) => {
-      this.render();
-    });
-    this.canvas.on('object:scaled', (event) => {
-      this.render();
-    });
-    this.canvas.on('object:skewed', (event) => {
-      this.render();
-    });
-    this.canvas.on('object:rotated', (event) => {
-      this.render();
+
+    const eventsToUndo = [
+      'object:moved', 
+      'object:scaled', 
+      'object:skewed', 
+      'object:rotated'
+    ]
+    eventsToUndo.forEach((event) => {
+      this.canvas.on(event, () => {
+        this.render();
+      })
     });
   }
 
   switchTool(tool) {
-    this.canvas.__eventListeners['mouse:down'] = [];
-    this.canvas.__eventListeners['mouse:up'] = [];
-    this.canvas.__eventListeners['object:moving'] = [];
-    this.canvas.__eventListeners['object:scaling'] = [];
-    this.canvas.__eventListeners['object:skewing'] = [];
-    this.canvas.__eventListeners['object:rotating'] = [];
-    this.canvas.on('mouse:down', (event) => {
-      tool.handleMouseDown(event);
-    });
-    this.canvas.on('object:moving', () => {
-      tool.isDrawing = false;
-    });
-    this.canvas.on('object:scaling', () => {
-      tool.isDrawing = false;
-    });
-    this.canvas.on('object:skewing', () => {
-      tool.isDrawing = false;
-    });
-    this.canvas.on('object:rotating', () => {
-      tool.isDrawing = false;
-    });
-    this.canvas.on('mouse:up', (event) => {
-      tool.handleMouseUp(event);
-    });
+    const events = {
+      'mouse:down': (event) => tool.handleMouseDown(event), 
+      'mouse:up': (event) => tool.handleMouseUp(event), 
+      'mouse:move': (event) => tool.handleMouseMove(event),
+      'object:moving': () => tool.isDrawing = false, 
+      'object:scaling': () => tool.isDrawing = false, 
+      'object:skewing': () => tool.isDrawing = false,
+      'object:rotating': () => tool.isDrawing = false
+    };
+    for (const [eventName, eventCallback] of Object.entries(events)) {
+      this.canvas.__eventListeners[eventName] = []
+      this.canvas.on(eventName, eventCallback)
+    }
   }
 
   getMousePosition(event) {
@@ -69,11 +57,6 @@ class Canvas {
     this.canvas.setWidth(this.width);
     this.canvas.setHeight(this.height);
     this.render();
-  }
-
-  draw() {
-    // continue;
-    // canvas.renderAll();
   }
 
   undo() {
